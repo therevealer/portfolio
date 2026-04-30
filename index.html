@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Emmanuel Aguchukwu — Technical Writer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0f0d;
+    --muted: #6b6b65;
+    --faint: #e8e6df;
+    --surface: #f7f5f0;
+    --white: #ffffff;
+    --accent: #1a1a18;
+    --tag-bg: #ededea;
+    --tag-text: #3a3a36;
+    --link: #1a1a18;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2.5rem;
+    height: 56px;
+  }
+
+  .nav-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  section { padding: 5rem 2.5rem; }
+
+  .container { max-width: 760px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 2.5rem;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .hero-cta:hover { opacity: 0.8; }
+
+  .hero-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid var(--faint);
+    cursor: pointer;
+    transition: border-color 0.2s;
+    margin-left: 0.75rem;
+  }
+
+  .hero-cta-ghost:hover { border-color: var(--muted); }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink);
+    max-width: 640px;
+  }
+
+  .about-text strong { font-weight: 500; }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* EXPERIENCE */
+  .exp-list { list-style: none; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .exp-item:first-child { padding-top: 0; }
+
+  .exp-meta { padding-top: 0.15rem; }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+
+  .exp-company {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .exp-role {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--faint);
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .project-card:hover { border-color: var(--muted); }
+
+  .project-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: opacity 0.2s;
+  }
+
+  .project-link:hover { opacity: 0.6; }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  /* WRITING */
+  .writing-list { list-style: none; }
+
+  .writing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--faint);
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+
+  .writing-item:hover { opacity: 0.6; }
+  .writing-item:first-child { padding-top: 0; }
+
+  .writing-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--ink);
+    flex: 1;
+  }
+
+  .writing-pub {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--surface); }
+
+  .contact-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    max-width: 480px;
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .contact-link:hover { opacity: 0.5; }
+
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 3.5rem 1.25rem; }
+    #hero { padding: 3rem 1.25rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .writing-item { flex-direction: column; gap: 0.25rem; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#hero">EA.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Technical Writer — Documentation Engineer</p>
+    <h1 class="hero-name">Emmanuel<br/><em>Aguchukwu</em></h1>
+    <p class="hero-tagline">I write documentation that developers actually read. Specializing in blockchain infrastructure, API references, and docs-as-code systems.</p>
+    <a class="hero-cta" href="#contact">Get in touch →</a>
+    <a class="hero-cta-ghost" href="#projects">See my work</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <p class="about-text">
+      I'm a technical writer and documentation engineer with <strong>4+ years of experience</strong> in the Web3 space. I've embedded with teams at Blockscout, Mode Network, and Alchemy — building documentation systems that scale, not just pages that ship.
+      <br/><br/>
+      I specialize in the intersection of complex infrastructure and developer clarity: API references, smart contract guides, gas mechanics, L2 architecture, and the docs-as-code tooling that holds it all together.
+    </p>
+    <div class="about-tags">
+      <span class="tag">API Documentation</span>
+      <span class="tag">OpenAPI / Swagger</span>
+      <span class="tag">Mintlify</span>
+      <span class="tag">Fern</span>
+      <span class="tag">GitBook</span>
+      <span class="tag">Docusaurus</span>
+      <span class="tag">Vale</span>
+      <span class="tag">GitHub Actions</span>
+      <span class="tag">Layer 2 Protocols</span>
+      <span class="tag">EVM / Smart Contracts</span>
+      <span class="tag">DeFi</span>
+      <span class="tag">Web3 Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background: var(--surface);">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <ul class="exp-list">
+      <li class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">2023 — Present</div>
+          <div class="exp-company">Mode Network</div>
+        </div>
+        <div>
+          <p class="exp-role">Technical Writer (Sole)</p>
+          <p class="exp-desc">Owned the entire documentation surface for a Layer 2 protocol. Built and maintained developer guides, API references, and onboarding docs from scratch. Implemented a docs-as-code pipeline with automated linting and CI/CD workflows.</p>
+        </div>
+      </li>
+      <li class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">2022 — 2023</div>
+          <div class="exp-company">Blockscout</div>
+        </div>
+        <div>
+          <p class="exp-role">Technical Writer</p>
+          <p class="exp-desc">Produced 28+ articles and guides covering smart contract exploration, gas mechanics (EIP-1559), ENS, wallet integrations, and MCP for the leading open-source multi-chain block explorer.</p>
+        </div>
+      </li>
+      <li class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">2022</div>
+          <div class="exp-company">Alchemy</div>
+        </div>
+        <div>
+          <p class="exp-role">Technical Writer</p>
+          <p class="exp-desc">Authored 8 developer-focused pieces for one of the most widely used Web3 developer platforms, covering APIs, SDKs, and infrastructure tooling.</p>
+        </div>
+      </li>
+      <li class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">2021</div>
+          <div class="exp-company">Genesys Tech Hub</div>
+        </div>
+        <div>
+          <p class="exp-role">Technical Writing Intern (Web3)</p>
+          <p class="exp-desc">Foundational internship that introduced blockchain documentation practices and developer communication frameworks.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Portfolio Projects</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <p class="project-icon">01 — DOCS SITE</p>
+        <p class="project-title">Provable API Reference</p>
+        <p class="project-desc">Full API documentation site for Aleo's Provable block explorer, built with Fern CLI. Covers endpoints, authentication, data schemas, and usage examples.</p>
+        <div class="project-tags">
+          <span class="tag">Fern</span>
+          <span class="tag">OpenAPI</span>
+          <span class="tag">Aleo</span>
+        </div>
+        <a class="project-link" href="https://provable-api-docs.docs.buildwithfern.com" target="_blank">View live docs →</a>
+      </div>
+      <div class="project-card">
+        <p class="project-icon">02 — DOCS SITE</p>
+        <p class="project-title">zkPass Documentation</p>
+        <p class="project-desc">Rebuilt documentation site for zkPass using Mintlify. Full setup from scratch: architecture, Git workflow, JSON config, and custom branding to match product identity.</p>
+        <div class="project-tags">
+          <span class="tag">Mintlify</span>
+          <span class="tag">ZK Proofs</span>
+          <span class="tag">Git</span>
+        </div>
+        <a class="project-link" href="#" target="_blank">View project →</a>
+      </div>
+      <div class="project-card">
+        <p class="project-icon">03 — CI/CD</p>
+        <p class="project-title">Docs Linting Pipeline</p>
+        <p class="project-desc">Automated documentation quality system using Vale and Spectral with GitHub Actions. Enforces style rules and OpenAPI spec validity on every pull request.</p>
+        <div class="project-tags">
+          <span class="tag">Vale</span>
+          <span class="tag">Spectral</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+        <a class="project-link" href="#" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing" style="background: var(--surface);">
+  <div class="container">
+    <p class="section-label">Writing Samples</p>
+    <ul class="writing-list">
+      <li class="writing-item">
+        <span class="writing-title">Smart Contract Exploration Guide — a comprehensive walkthrough of contract verification and interaction</span>
+        <span class="writing-pub">Blockscout</span>
+      </li>
+      <li class="writing-item">
+        <span class="writing-title">Gas Tracker deep dive — EIP-1559 base fee mechanics and priority fee dynamics explained</span>
+        <span class="writing-pub">Blockscout</span>
+      </li>
+      <li class="writing-item">
+        <span class="writing-title">ENS & Ethereum Name Service — developer reference for resolution, reverse lookup, and integration</span>
+        <span class="writing-pub">Blockscout</span>
+      </li>
+      <li class="writing-item">
+        <span class="writing-title">Ethereum Proof-of-Stake time architecture — technical analysis across two structured documents</span>
+        <span class="writing-pub">Research</span>
+      </li>
+      <li class="writing-item">
+        <span class="writing-title">Alchemy SDK integration guides — API tutorials for production Web3 development</span>
+        <span class="writing-pub">Alchemy</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <p class="contact-headline">Open to full-time roles and freelance work.</p>
+    <p class="contact-sub">If you're building in Web3 and need documentation that meets developers where they are — let's talk.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:hello@emmanuelaguchukwu.com">Email</a>
+      <a class="contact-link" href="https://linkedin.com/in/emmanuelaguchukwu" target="_blank">LinkedIn</a>
+      <a class="contact-link" href="https://github.com/emmanuelaguchukwu" target="_blank">GitHub</a>
+      <a class="contact-link" href="#" target="_blank">Resume PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-text">Emmanuel Aguchukwu — Technical Writer</span>
+  <span class="footer-text">Lagos, Nigeria · Available for remote work</span>
+</footer>
+
+</body>
+</html>
