@@ -81,6 +81,7 @@
     align-items: center;
     padding: 4rem 2.5rem;
     border-bottom: 1px solid var(--faint);
+    background: var(--white);
   }
 
   .hero-inner { max-width: 760px; margin: 0 auto; }
@@ -332,9 +333,77 @@
     letter-spacing: 0.04em;
   }
 
-  /* CONTACT */
-  #contact { background: var(--surface); }
+  /* PROCESS */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    border: 1px solid var(--faint);
+  }
 
+  .process-step {
+    padding: 1.75rem 1.5rem;
+    border-right: 1px solid var(--faint);
+    position: relative;
+  }
+
+  .process-step:last-child { border-right: none; }
+
+  .process-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .process-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .process-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* TOOLS */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .tools-category-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .tools-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .tools-list li {
+    font-size: 0.9rem;
+    color: var(--ink);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .tools-list li:last-child { border-bottom: none; }
+
+  /* CONTACT */
   .contact-headline {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -380,6 +449,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--white);
   }
 
   .footer-text {
@@ -399,6 +469,10 @@
     .writing-item { flex-direction: column; gap: 0.25rem; }
     footer { flex-direction: column; gap: 0.75rem; text-align: center; }
   }
+
+  .writing-title {
+  text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -407,9 +481,11 @@
   <a class="nav-brand" href="#hero">EA.</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#experience">Work</a></li>
+    <!-- <li><a href="#experience">Work</a></li> -->
     <li><a href="#projects">Projects</a></li>
     <li><a href="#writing">Writing</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#tools">Tools</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -418,21 +494,22 @@
   <div class="hero-inner">
     <p class="hero-eyebrow">Technical Writer — Documentation Engineer</p>
     <h1 class="hero-name">Emmanuel<br/><em>Aguchukwu</em></h1>
-    <p class="hero-tagline">I write documentation that developers actually read. Specializing in blockchain infrastructure, API references, and docs-as-code systems.</p>
+    <p class="hero-tagline">I turn complex systems into clear, usable documentation</p>
     <a class="hero-cta" href="#contact">Get in touch →</a>
     <a class="hero-cta-ghost" href="#projects">See my work</a>
   </div>
 </section>
 
-<section id="about">
+<!-- About: white -->
+<section id="about" style="background: var(--white);">
   <div class="container">
     <p class="section-label">About</p>
     <p class="about-text">
-      I'm a technical writer and documentation engineer with <strong>4+ years of experience</strong> in the Web3 space. I've embedded with teams at Blockscout, Mode Network, and Alchemy — building documentation systems that scale, not just pages that ship.
+      I'm a technical writer and documentation engineer with <strong>4+ years of experience</strong> in the Web3 space. I've embedded with teams at Blockscout, Mode Network, and Alchemy, building documentation systems that scale, not just pages that ship.
       <br/><br/>
       I specialize in the intersection of complex infrastructure and developer clarity: API references, smart contract guides, gas mechanics, L2 architecture, and the docs-as-code tooling that holds it all together.
     </p>
-    <div class="about-tags">
+    <!-- <div class="about-tags">
       <span class="tag">API Documentation</span>
       <span class="tag">OpenAPI / Swagger</span>
       <span class="tag">Mintlify</span>
@@ -445,11 +522,11 @@
       <span class="tag">EVM / Smart Contracts</span>
       <span class="tag">DeFi</span>
       <span class="tag">Web3 Infrastructure</span>
-    </div>
+    </div> -->
   </div>
 </section>
 
-<section id="experience" style="background: var(--surface);">
+<!-- <section id="experience" style="background: var(--surface);">
   <div class="container">
     <p class="section-label">Experience</p>
     <ul class="exp-list">
@@ -495,9 +572,10 @@
       </li>
     </ul>
   </div>
-</section>
+</section> -->
 
-<section id="projects">
+<!-- Projects: surface -->
+<section id="projects" style="background: var(--surface);">
   <div class="container">
     <p class="section-label">Portfolio Projects</p>
     <div class="projects-grid">
@@ -521,9 +599,9 @@
           <span class="tag">ZK Proofs</span>
           <span class="tag">Git</span>
         </div>
-        <a class="project-link" href="#" target="_blank">View project →</a>
+        <a class="project-link" href="https://tpu-550fd223.mintlify.app/getting-started/introduction" target="_blank">View project →</a>
       </div>
-      <div class="project-card">
+      <!-- <div class="project-card">
         <p class="project-icon">03 — CI/CD</p>
         <p class="project-title">Docs Linting Pipeline</p>
         <p class="project-desc">Automated documentation quality system using Vale and Spectral with GitHub Actions. Enforces style rules and OpenAPI spec validity on every pull request.</p>
@@ -533,56 +611,155 @@
           <span class="tag">GitHub Actions</span>
         </div>
         <a class="project-link" href="#" target="_blank">View on GitHub →</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
 
-<section id="writing" style="background: var(--surface);">
+<!-- Writing: white -->
+<section id="writing" style="background: var(--white);">
   <div class="container">
     <p class="section-label">Writing Samples</p>
     <ul class="writing-list">
       <li class="writing-item">
-        <span class="writing-title">Smart Contract Exploration Guide — a comprehensive walkthrough of contract verification and interaction</span>
+        <a class="writing-title" href="https://www.blog.blockscout.com/smart-contract-analysis-guide/" target="_blank">
+          Smart Contract Exploration Guide - a comprehensive walkthrough of contract verification and interaction</a>
         <span class="writing-pub">Blockscout</span>
       </li>
       <li class="writing-item">
-        <span class="writing-title">Gas Tracker deep dive — EIP-1559 base fee mechanics and priority fee dynamics explained</span>
+        <a class="writing-title" href="https://www.blog.blockscout.com/blockscout-gas-tracker-ethereum-op-ink-evm/" target="_blank">
+          Gas Tracker deep dive - EIP-1559 base fee mechanics and priority fee dynamics explained</a>
         <span class="writing-pub">Blockscout</span>
       </li>
       <li class="writing-item">
-        <span class="writing-title">ENS & Ethereum Name Service — developer reference for resolution, reverse lookup, and integration</span>
+        <a class="writing-title" href="https://www.blog.blockscout.com/ens-name-domains-ethereum-name-service-lookup/" target="_blank">
+          Ethereum Name Service (ENS): How to Search and Explore ENS Domains </a>
         <span class="writing-pub">Blockscout</span>
       </li>
       <li class="writing-item">
-        <span class="writing-title">Ethereum Proof-of-Stake time architecture — technical analysis across two structured documents</span>
-        <span class="writing-pub">Research</span>
+        <a class="writing-title" href="https://www.blog.blockscout.com/blockscout-graphql-api-guide/" target="_blank"> Blockscout GraphQL API Guide</a>
+        <span class="writing-pub"> API Documentation</span>
       </li>
       <li class="writing-item">
-        <span class="writing-title">Alchemy SDK integration guides — API tutorials for production Web3 development</span>
+        <a class="writing-title" href="https://www.alchemy.com/author/aguchukwu-emmanuel-ebube" target="_blank">
+          Alchemy guides & tutorials for production Web3 development</a>
         <span class="writing-pub">Alchemy</span>
       </li>
     </ul>
   </div>
 </section>
 
-<section id="contact">
+<!-- Process: surface -->
+<section id="process" style="background: var(--surface);">
+  <div class="container">
+    <p class="section-label">Process</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <p class="process-num">01</p>
+        <p class="process-title">Understand the product</p>
+        <p class="process-desc">I read the codebase, run the API, and talk to engineers before writing a single word. Documentation starts with comprehension.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-num">02</p>
+        <p class="process-title">Audit what exists</p>
+        <p class="process-desc">Gaps, inconsistencies, outdated content. I map the full documentation surface before adding to it.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-num">03</p>
+        <p class="process-title">Structure before writing</p>
+        <p class="process-desc">I apply the Diátaxis framework, tutorials, how-tos, references, and explanations each serve a distinct reader goal.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-num">04</p>
+        <p class="process-title">Write for the developer</p>
+        <p class="process-desc">Precise, scannable, and tested. Every code sample runs. Every parameter is documented. Nothing is assumed.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-num">05</p>
+        <p class="process-title">Build the system</p>
+        <p class="process-desc">Docs-as-code pipelines, linting rules, CI/CD checks. I set up infrastructure so quality scales with the team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools: white -->
+<section id="tools" style="background: var(--white);">
+  <div class="container">
+    <p class="section-label">Tools & Skills</p>
+    <div class="tools-grid">
+      <div>
+        <p class="tools-category-label">Writing & Content</p>
+        <ul class="tools-list">
+          <li>Markdown / MDX</li>
+          <li>Technical editing & style guides</li>
+          <li>API reference writing</li>
+          <li>Diátaxis framework</li>
+          <li>Release notes & changelogs</li>
+        </ul>
+      </div>
+      <div>
+        <p class="tools-category-label">Docs Platforms</p>
+        <ul class="tools-list">
+          <li>Mintlify</li>
+          <li>Fern CLI</li>
+          <li>GitBook</li>
+          <li>Docusaurus</li>
+          <li>ReadMe</li>
+        </ul>
+      </div>
+      <div>
+        <p class="tools-category-label">Specs & APIs</p>
+        <ul class="tools-list">
+          <li>OpenAPI / Swagger</li>
+          <li>REST API documentation</li>
+          <li>GraphQL documentation</li>
+          <li>Postman / Bruno</li>
+          <li>JSON Schema</li>
+        </ul>
+      </div>
+      <div>
+        <p class="tools-category-label">Docs-as-Code</p>
+        <ul class="tools-list">
+          <li>Git & GitHub</li>
+          <li>GitHub Actions (CI/CD)</li>
+          <li>Vale (prose linting)</li>
+          <li>Spectral (OpenAPI linting)</li>
+          <li>Mermaid / PlantUML diagrams</li>
+        </ul>
+      </div>
+      <div>
+        <p class="tools-category-label">Web3 Domain</p>
+        <ul class="tools-list">
+          <li>EVM & smart contracts</li>
+          <li>Layer 2 protocols (OP Stack)</li>
+          <li>DeFi protocols</li>
+          <li>Block explorers</li>
+          <li>Zero-knowledge proofs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact: surface -->
+<section id="contact" style="background: var(--surface);">
   <div class="container">
     <p class="section-label">Contact</p>
     <p class="contact-headline">Open to full-time roles and freelance work.</p>
     <p class="contact-sub">If you're building in Web3 and need documentation that meets developers where they are — let's talk.</p>
     <div class="contact-links">
-      <a class="contact-link" href="mailto:hello@emmanuelaguchukwu.com">Email</a>
-      <a class="contact-link" href="https://linkedin.com/in/emmanuelaguchukwu" target="_blank">LinkedIn</a>
-      <a class="contact-link" href="https://github.com/emmanuelaguchukwu" target="_blank">GitHub</a>
-      <a class="contact-link" href="#" target="_blank">Resume PDF</a>
+      <a class="contact-link" href="https://mail.google.com/mail/?view=cm&to=therevealerdev@gmail.com" target="_blank">Email</a>
+      <a class="contact-link" href="https://linkedin.com/in/therevealer" target="_blank">LinkedIn</a>
+      <!-- <a class="contact-link" href="https://github.com/emmanuelaguchukwu" target="_blank">GitHub</a> -->
+      <a class="contact-link" href="https://flowcv.com/resume/hv3dms0pm29k" target="_blank">Resume PDF</a>
     </div>
   </div>
 </section>
 
 <footer>
   <span class="footer-text">Emmanuel Aguchukwu — Technical Writer</span>
-  <span class="footer-text">Lagos, Nigeria · Available for remote work</span>
+  <span class="footer-text">Abuja, Nigeria · Available for remote work</span>
 </footer>
 
 </body>
